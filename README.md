@@ -1,1 +1,1 @@
-# minessweeper-delphi
+# minessweeper-pas
