@@ -1,7 +1,4 @@
-program main;
-
-{$APPTYPE CONSOLE}
-
+uses crt;
 type playerstate=(loser,winner,notyet);
 var
  b(*when b=true that means player has lost*)
@@ -29,7 +26,7 @@ procedure writeit; var i1,j1:byte; begin
   write(char(186));
   for j1:=1 to jj do
    if (i1=inow) and (j1=jnow) then write(char(178),' ') else
-    if board[i1,j1]='0' then write('. ') else
+    if board[i1,j1]='0' then write(char(250),' ') else
      write(board[i1,j1],' ');
   writeln(char(186));
   end;
@@ -86,8 +83,8 @@ procedure click_around_Os; var i5,j5:byte; begin
  end;
 
 procedure mine_sign; begin
- if board[inow,jnow]='#' then board[inow,jnow]:=char(6) else
-  if board[inow,jnow]=char(6) then board[inow,jnow]:='#';
+ if board[inow,jnow]=char(4) then board[inow,jnow]:=char(31) else
+  if board[inow,jnow]=char(31) then board[inow,jnow]:=char(4);
  end;
 
 begin
@@ -98,7 +95,7 @@ begin
  write('lines(1..20) = ');readln(ii);
  write('mines=');readln(mines);
  for i:=1 to ii do for j:=1 to jj do begin
-  board[i,j]:='#';
+  board[i,j]:=char(4);
   map[i,j]:=false;
   clicked[i,j]:=false;
   end;
